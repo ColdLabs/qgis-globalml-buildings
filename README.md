@@ -1,8 +1,12 @@
 # GlobalML Buildings Downloader (QGIS plugin)
 
-Downloads Microsoft Global ML Building Footprints for the map view or the polygons of a layer, as polygons, centroid points or both. Attributes: `height` (metres), `confidence`, `area_in_meters`, `region`, `quadkey`. Output CRS is EPSG:4326.
+> **Unofficial.** This plugin is not made, endorsed or supported by Microsoft. It reads the files Microsoft publishes. Report problems with the plugin [here](https://github.com/ColdLabs/qgis-globalml-buildings/issues), not to Microsoft.
 
-Coverage is worldwide, with gaps. `height` is set for some buildings and empty for others: it is set for about half the buildings in the Porto tile (every one in central Porto), for none in the Portugal file of the Minho tile, and for some in its Spain file. `confidence` was empty in every file sampled. Microsoft writes -1 for an unknown value; the plugin writes it as NULL.
+Downloads [Microsoft Global ML Building Footprints](https://github.com/microsoft/GlobalMLBuildingFootprints) for the map view or the polygons of a layer, as polygons, centroid points or both. Attributes: `height` (metres), `confidence`, `area_in_meters`, `region`, `quadkey`. Output CRS is EPSG:4326.
+
+Coverage is 225 regions worldwide, with gaps. It includes Europe, North America and Australia, which [Google Open Buildings](https://github.com/ColdLabs/qgis-open-buildings) does not cover.
+
+`height` is set where Microsoft estimated it and empty elsewhere. For example, it is set for every building in central Porto and for none in the Portuguese side of the Minho valley. `confidence` was empty in every file we sampled. Microsoft writes -1 for an unknown value, and the plugin writes it as NULL.
 
 ## Install
 
