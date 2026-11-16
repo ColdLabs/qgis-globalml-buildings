@@ -27,6 +27,7 @@ from qgis.PyQt.QtCore import QCoreApplication, QMetaType
 from qgis.PyQt.QtGui import QIcon
 
 from . import index, quadkey, tiles
+from .style import HEIGHT_STYLE
 
 ICON = os.path.join(os.path.dirname(__file__), 'icon.svg')
 WGS84 = QgsCoordinateReferenceSystem('EPSG:4326')
@@ -85,7 +86,9 @@ class DownloadBuildings(QgsProcessingAlgorithm):
             'QGIS profile folder and reused afterwards.\n\n'
             'Height is in metres. Height and confidence are empty where '
             'Microsoft has no value; for confidence that is every file '
-            'sampled so far.\n\n'
+            'sampled so far. Loaded layers are coloured by height: under '
+            '6 m, 6 to 12 m, 12 to 25 m, 25 to 50 m, 50 m and over, and '
+            'grey for no height.\n\n'
             'Data: Microsoft Global ML Building Footprints, {}. Credit '
             'Microsoft Global ML Building Footprints and the release date '
             'when you publish results. This plugin is not affiliated with '
@@ -319,6 +322,11 @@ class DownloadBuildings(QgsProcessingAlgorithm):
             if point_sink is None:
                 raise QgsProcessingException(
                     tr('Set the building points output.')
+                )
+        for dest in results.values():
+            if context.willLoadLayerOnCompletion(dest):
+                context.layerToLoadOnCompletionDetails(dest).setPostProcessor(
+                    HEIGHT_STYLE
                 )
 
         bbox = area.boundingBox()

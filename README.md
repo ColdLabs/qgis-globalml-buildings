@@ -10,7 +10,9 @@ Coverage is 225 regions worldwide, with gaps. It includes Europe, North America 
 
 ![Building footprints in central Porto, Portugal, coloured by height](docs/screenshot-porto.png)
 
-*Central Porto, Portugal: 316 building polygons from the plugin, coloured by the `height` attribute for this screenshot. The plugin itself loads them with a single default style.*
+*Central Porto, Portugal: 504 buildings from the plugin, as QGIS loads them, coloured by height.*
+
+Layers loaded into QGIS are coloured by `height` (lower bound inclusive): under 6 m, 6 to 12 m, 12 to 25 m, 25 to 50 m, and 50 m and over, light to dark. That is roughly 1 to 2 floors, 3 to 4, 5 to 8, 9 to 16, and towers. Buildings with no height are grey, so they do not read as low buildings. Files written by `qgis_process` carry no style.
 
 ## Install
 
