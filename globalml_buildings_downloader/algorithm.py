@@ -44,6 +44,12 @@ def tr(text):
     return QCoreApplication.translate('GlobalMLBuildings', text)
 
 
+def _size(n_bytes):
+    if n_bytes < 1e5:
+        return '{} KB'.format(max(1, round(n_bytes / 1e3)))
+    return '{:.1f} MB'.format(n_bytes / 1e6)
+
+
 class DownloadBuildings(QgsProcessingAlgorithm):
     EXTENT = 'EXTENT'
     AREA = 'AREA'
@@ -78,8 +84,8 @@ class DownloadBuildings(QgsProcessingAlgorithm):
             'downloads every file the area touches. Files are cached in the '
             'QGIS profile folder and reused afterwards.\n\n'
             'Height is in metres. Height and confidence are empty where '
-            'Microsoft has no value, which is most of the world for '
-            'confidence.\n\n'
+            'Microsoft has no value; for confidence that is every file '
+            'sampled so far.\n\n'
             'Data: Microsoft Global ML Building Footprints, {}. Credit '
             'Microsoft Global ML Building Footprints and the release date '
             'when you publish results. This plugin is not affiliated with '
@@ -187,6 +193,10 @@ class DownloadBuildings(QgsProcessingAlgorithm):
                 release
             )
         )
+        if os.path.exists(path):
+            feedback.pushInfo(tr('Index: cached'))
+        else:
+            feedback.pushInfo(tr('Index: downloading {}').format(url))
         try:
             tiles.download(
                 url, path, lambda done, total: None, feedback.isCanceled
@@ -255,8 +265,8 @@ class DownloadBuildings(QgsProcessingAlgorithm):
                     )
                 else:
                     feedback.pushInfo(
-                        tr('Tile {} ({}): {:.1f} MB to download').format(
-                            qk, tile.region, tile.size_bytes / 1e6
+                        tr('Tile {} ({}): {} to download').format(
+                            qk, tile.region, _size(tile.size_bytes)
                         )
                     )
                     new_bytes += tile.size_bytes
