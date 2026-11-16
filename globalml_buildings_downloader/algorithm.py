@@ -27,7 +27,7 @@ from qgis.PyQt.QtCore import QCoreApplication, QMetaType
 from qgis.PyQt.QtGui import QIcon
 
 from . import index, quadkey, tiles
-from .style import HEIGHT_STYLE
+from .style import height_style
 
 ICON = os.path.join(os.path.dirname(__file__), 'icon.svg')
 WGS84 = QgsCoordinateReferenceSystem('EPSG:4326')
@@ -326,7 +326,7 @@ class DownloadBuildings(QgsProcessingAlgorithm):
         for dest in results.values():
             if context.willLoadLayerOnCompletion(dest):
                 context.layerToLoadOnCompletionDetails(dest).setPostProcessor(
-                    HEIGHT_STYLE
+                    height_style()
                 )
 
         bbox = area.boundingBox()

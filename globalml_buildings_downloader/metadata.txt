@@ -3,7 +3,7 @@ name=GlobalML Buildings Downloader
 qgisMinimumVersion=3.38
 qgisMaximumVersion=4.99
 hasProcessingProvider=yes
-version=0.2.0
+version=0.2.1
 author=Pedro Branco
 email=support@coldlabs.app
 description=Download Microsoft Global ML Building Footprints as polygons, points or both, for the map view or a polygon layer.
@@ -22,7 +22,9 @@ tracker=https://github.com/ColdLabs/qgis-globalml-buildings/issues
 category=Web
 icon=icon.svg
 tags=buildings,microsoft,global ml building footprints,footprints,download,processing,worldwide
-changelog=0.2.0
+changelog=0.2.1
+    - Fix: a second run in the same QGIS session failed with "wrapped C/C++ object ... has been deleted"; every run now gets its own height colouring
+    0.2.0
     - Loaded layers are coloured by height: under 6 m, 6 to 12, 12 to 25, 25 to 50, 50 m and over; grey for no height
     0.1.1
     - Metadata: drop the deprecated supportsQt6 flag; QGIS 4 support comes from qgisMaximumVersion=4.99
