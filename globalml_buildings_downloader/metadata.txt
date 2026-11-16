@@ -1,0 +1,29 @@
+[general]
+name=GlobalML Buildings Downloader
+qgisMinimumVersion=3.38
+qgisMaximumVersion=4.99
+supportsQt6=yes
+hasProcessingProvider=yes
+version=0.1.0
+author=Pedro Branco
+email=support@coldlabs.app
+description=Download Microsoft Global ML Building Footprints as polygons, points or both, for the map view or a polygon layer.
+about=Downloads building footprints from Microsoft Global ML Building Footprints (release 2026-08-13) for the current map extent or the polygons of a layer. Output as polygons, centroid points or both, with height, confidence, area, region and quadkey.
+
+    Coverage: worldwide, with gaps. Height is set in some countries and empty in others; confidence is empty almost everywhere.
+
+    Microsoft publishes the data as whole files per country and Bing zoom-9 tile (about 78 km across at the equator), so the first run in a region downloads every file the area touches (up to a few hundred MB). Files are cached in the QGIS profile folder and reused. No extra Python packages are needed.
+
+    Data licence: Microsoft Global ML Building Footprints is published by Microsoft under the Community Data License Agreement Permissive 2.0 (CDLA Permissive 2.0). Credit Microsoft Global ML Building Footprints and the release date when you publish maps or data made with it. This plugin is not affiliated with Microsoft.
+
+    Runs as a Processing algorithm, so it also works in models, batch mode and qgis_process.
+homepage=https://github.com/ColdLabs/qgis-globalml-buildings#readme
+repository=https://github.com/ColdLabs/qgis-globalml-buildings
+tracker=https://github.com/ColdLabs/qgis-globalml-buildings/issues
+category=Web
+icon=icon.svg
+tags=buildings,microsoft,global ml building footprints,footprints,download,processing,worldwide
+changelog=0.1.0
+    - First release: download by map extent or polygon layer, as polygons, points or both
+    - Height, confidence, area, region and quadkey attributes
+    - A download size limit, and a pinned index release you can change
