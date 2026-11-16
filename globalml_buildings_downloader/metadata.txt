@@ -10,7 +10,7 @@ email=support@coldlabs.app
 description=Download Microsoft Global ML Building Footprints as polygons, points or both, for the map view or a polygon layer.
 about=Downloads building footprints from Microsoft Global ML Building Footprints (release 2026-08-13) for the current map extent or the polygons of a layer. Output as polygons, centroid points or both, with height, confidence, area, region and quadkey.
 
-    Coverage: worldwide, with gaps. Height is set for some buildings and empty for others (for example set for about half of Porto, empty along the Minho); confidence is empty in every file sampled so far.
+    Coverage: worldwide, with gaps. Height is set for some buildings and empty for others (for example set for every building in central Porto, and for none in the Portugal file of the Minho valley); confidence is empty in every file sampled so far.
 
     Microsoft publishes the data as whole files per country and Bing zoom-9 tile (about 78 km across at the equator), so the first run in a region downloads every file the area touches (up to a few hundred MB). Files are cached in the QGIS profile folder and reused. No extra Python packages are needed.
 

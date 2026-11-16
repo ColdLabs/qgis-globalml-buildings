@@ -2,7 +2,7 @@
 
 Downloads Microsoft Global ML Building Footprints for the map view or the polygons of a layer, as polygons, centroid points or both. Attributes: `height` (metres), `confidence`, `area_in_meters`, `region`, `quadkey`. Output CRS is EPSG:4326.
 
-Coverage is worldwide, with gaps. `height` is set for some buildings and empty for others: it is set for about half the buildings in the Porto tile and for none in the Portugal file of the Minho tile. `confidence` was empty in every file sampled. Microsoft writes -1 for an unknown value; the plugin writes it as NULL.
+Coverage is worldwide, with gaps. `height` is set for some buildings and empty for others: it is set for about half the buildings in the Porto tile (every one in central Porto), for none in the Portugal file of the Minho tile, and for some in its Spain file. `confidence` was empty in every file sampled. Microsoft writes -1 for an unknown value; the plugin writes it as NULL.
 
 ## Install
 
