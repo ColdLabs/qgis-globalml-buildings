@@ -8,6 +8,10 @@ Coverage is 225 regions worldwide, with gaps. It includes Europe, North America 
 
 `height` is set where Microsoft estimated it and empty elsewhere. For example, it is set for every building in central Porto and for none in the Portuguese side of the Minho valley. `confidence` was empty in every file we sampled. Microsoft writes -1 for an unknown value, and the plugin writes it as NULL.
 
+![Building footprints in central Porto, Portugal, coloured by height](docs/screenshot-porto.png)
+
+*Central Porto, Portugal: 316 building polygons from the plugin, coloured by the `height` attribute for this screenshot. The plugin itself loads them with a single default style.*
+
 ## Install
 
 In QGIS: **Plugins → Manage and Install Plugins → All**, search for "GlobalML Buildings Downloader", then **Install**. Requires QGIS 3.38 or later (Qt5 or Qt6). No extra Python packages are needed.
