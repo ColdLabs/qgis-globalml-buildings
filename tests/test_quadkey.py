@@ -44,11 +44,10 @@ def test_bbox_over_four_tiles_lists_each_once():
     assert '031332213' in got
 
 
-def test_poles_clamp_to_the_last_row():
-    north = quadkey.tiles_in_bbox(0.1, 89.9, 0.1, 89.9)
-    south = quadkey.tiles_in_bbox(0.1, -89.9, 0.1, -89.9)
-    assert quadkey.to_tile(north[0])[1] == 0
-    assert quadkey.to_tile(south[0])[1] == 511
+@pytest.mark.parametrize('lat, row', [(90, 0), (89.9, 0), (-90, 511), (-89.9, 511)])
+def test_poles_clamp_to_the_last_row(lat, row):
+    (qk,) = quadkey.tiles_in_bbox(0.1, lat, 0.1, lat)
+    assert quadkey.to_tile(qk)[1] == row
 
 
 def test_dateline_stays_in_range():
